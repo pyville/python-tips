@@ -32,7 +32,7 @@ print(new_string)
 
 아래의 코드 조각은 문자열을 첫 글자만 대문자로(Title Case) 변환하는 예시입니다.
 
-우리는 문자열의 `title` 메서드를 이용하겠습니다.
+우리는 문자열의 `title()` 메서드를 이용하겠습니다.
 
 ```
 my_string = "my name is chaitanya baweja"
@@ -91,7 +91,7 @@ my_list = [0]*n # n은 리스트의 크기
 
 ## 5. 문자열의 리스트를 하나의 문자열로 합치기
 
-문자열의 `join` 메서드를 문자열의 리스트를 입력받아 하나의 문자열로 합치는 기능을 합니다.
+문자열의 `join()` 메서드를 문자열의 리스트를 입력받아 하나의 문자열로 합치는 기능을 합니다.
 
 쉼표(,)를 구분자로 한 예시입니다.
 
@@ -121,9 +121,9 @@ print(b) # 1
 
 ## 7. 문자열을 부분 문자열의 리스트로 쪼개기
 
-We can split a string into a list of substrings using the .split() method in the string class. 
+문자열의 `split()` 메서드를 이용하여 문자열을 부분 문자열의 리스트로 쪼갤 수 있습니다.
 
-You can also pass as an argument the separator on which you wish to split.
+`split()` 메서드의 매개 변수로 원하는 구분자를 넣어서 쪼갤 수도 있습니다.
 
 ```
 string_1 = "My name is Chaitanya Baweja"
@@ -140,9 +140,9 @@ print(string_2.split('/'))
 
 ## 8. 조건제시법
 
-조건제시법(List Comprehension) provides us with an elegant way of creating lists based on other lists.
+조건제시법(List Comprehension)은 다른 리스트를 통해 리스트를 만드는 세련된 방법을 제공합니다.
 
-The following snippet creates a new list by multiplying each element of the old list by two.
+아래의 코드 조각은 기존 리스트의 모든 원소에 각각 2를 곱하여 새로운 리스트를 만드는 예시입니다.
 
 ```
 # 리스트의 모든 원소에 2를 곱하기
@@ -161,6 +161,8 @@ print(new_list)
 
 따라서 `Python`에서 회문(palindrome, 거꾸로 해도 똑같은 문자열)을 판별하는 것 또한 직관적으로 가능하죠.
 
+영어의 회문은 물론, 한국어의 회문 '토마토', '기러기', '스위스' 등도 판별할 수 있습니다.
+
 ```
 my_string = "abcba"
 
@@ -173,9 +175,9 @@ else:
 # palindrome
 ```
 
-## 10. Using Enumerate to Get Index/Value Pairs
+## 10. 인덱스와 값을 쌍으로 만들기
 
-The following script uses enumerate to iterate through values in a list along with their indices.
+아래의 코드 조각은 `enumerate` 메서드를 이용하여 리스트의 각 항목의 인덱스와 값을 열거하는 예시입니다.
 
 ```
 my_list = ['a', 'b', 'c', 'd', 'e']
@@ -190,13 +192,17 @@ for index, value in enumerate(my_list):
 # 4: e
 ```
 
-## 11. Find Whether Two Strings are Anagrams
+## 11. 아나그램 찾기
 
-An interesting application of the Counter class is to find anagrams.
+아나그램 찾기는 `Counter` 클래스를 응용하는 흥미로운 방법입니다.
 
-An anagram is a word or phrase formed by rearranging the letters of a different word or phrase.
+아나그램(anagram)은 다른 단어나 구의 순서를 바꿔서 만들어진 단어나 구입니다.
 
-If the Counter objects of two strings are equal, then they are anagrams.
+소설 `해리 포터`의 유명한 대사인 "나는 볼드모트 경이다(I am Lord Voldemort)"는
+
+사실 볼드모트의 본명인 "톰 마블로 리들(Tom Marvolo Riddle)"의 아나그램이죠.
+
+거두절미하고, 문자열의 `Counter` 객체가 서로 동일하다면 서로 아나그램 관계가 됩니다.
 
 ```
 from collections import Counter
@@ -205,20 +211,18 @@ str_1, str_2, str_3 = "acbde", "abced", "abcda"
 cnt_1, cnt_2, cnt_3  = Counter(str_1), Counter(str_2), Counter(str_3)
 
 if cnt_1 == cnt_2:
-    print('1 and 2 anagram')
+    print('1과 2는 아나그램 관계')
 if cnt_1 == cnt_3:
-    print('1 and 3 anagram')
+    print('1과 3은 아나그램 관계')
 ```
 
-## 12. Using the try-except-else Block
+## 12. try-except-else 블록 사용하기
 
-Error handling in Python can be done easily using the try/except block. 
+`Python`의 예외 처리는 `try/except` 블록을 사용하여 쉽게 구현할 수 있습니다. 
 
-Adding an else statement to this block might be useful. 
+예외가 발생하지 않았을 때 실행되는 `else` 블록을 추가하는 것도 유용하죠. 
 
-It’s run when there is no exception raised in the try block.
-
-If you need to run something irrespective of exception, use finally.
+예외에 상관없이 실행되어야 하는 코드는 `finally` 블록에 넣어 줍니다.
 
 ```
 a, b = 1,0
@@ -234,15 +238,15 @@ finally:
     print("항상 실행되는 블록")
 ```
 
-## 13. Frequency of Elements in a List
+## 13. 리스트의 각 항목의 빈도
 
-There are multiple ways of doing this, but my favorite is using the Python Counter class.
+리스트의 각 항목의 빈도를 계산하는 여러 가지 방법이 있지만, 저는 `Counter` 클래스를 이용하는 방법을 선호합니다.
 
-Python counter keeps track of the frequency of each element in the container. 
+`Python`의 `counter`는 리스트, 딕셔너리 등에서 특정 항목의 등장 빈도를 기록하죠. 
 
-Counter() returns a dictionary with elements as keys and frequency as values.
+`Counter()` 메서드를 호출하면 항목(key)과 등장 빈도(value)의 쌍으로 된 딕셔너리를 얻을 수 있습니다.
 
-We also use the most_common() function to get themost_frequentelement in the list.
+또한 `most_common(n)` 메서드는 등장 빈도가 제일 높은 항목을 n개 반환합니다.
 
 ```
 # 리스트의 각 항목의 빈도 계산하기
@@ -261,9 +265,9 @@ print(count.most_common(1)) # 가장 자주 등장하는 항목
 # [('d', 5)]
 ```
 
-## 14. Check the Memory Usage of an Object
+## 14. 객체의 메모리 점유율 확인
 
-The following script can be used to check the memory usage of an object. 
+아래 코드 조각은 `Python`에서 객체의 메모리 점유율을 확인하는 예시입니다. 
 
 [더 알아보기](https://code.tutsplus.com/tutorials/understand-how-much-memory-your-python-objects-use--cms-25609 "Read More")
 
@@ -274,13 +278,13 @@ num = 21
 
 print(sys.getsizeof(num))
 
-# In Python 2, 24
-# In Python 3, 28
+# Python 2에서는 24
+# Python 3에서는 28
 ```
 
 ## 15. 리스트에서 무작위 추출
 
-The following snippet generates n number of random samples from a given list using the random library.
+아래 코드 조각은 `random` 모듈을 이용하여 리스트에서 n개의 항목을 무작위 추출하는 예시입니다.
 
 ```
 import random
@@ -290,16 +294,14 @@ num_samples = 2
 
 samples = random.sample(my_list,num_samples)
 print(samples)
-# [ 'a', 'e'] this will have any 2 random values
+# [ 'a', 'e'] 등 2개의 항목이 무작위로 추출됨
 ```
 
-I have been recommended the secrets library for generating random samples for cryptography purposes. 
-
-The following snippet will work only on Python 3.
+`secrets` 라이브러리를 사용하면 암호화된 무작위 추출이 가능합니다. 아래 코드 조각은 `Python 3`에서만 동작합니다.
 
 ```
-import secrets                              # imports secure module.
-secure_random = secrets.SystemRandom()      # creates a secure random object.
+import secrets                              # 보안 모듈 임포트
+secure_random = secrets.SystemRandom()      # 안전한 random 객체 생성
 
 my_list = ['a','b','c','d','e']
 num_samples = 2
@@ -307,12 +309,12 @@ num_samples = 2
 samples = secure_random.sample(my_list, num_samples)
 
 print(samples)
-# [ 'e', 'd'] this will have any 2 random values
+# [ 'e', 'd'] 등 2개의 항목이 무작위로 추출됨
 ```
 
-## 16. Time Taken to Execute a Piece of Code
+## 16. 코드 실행 시 소요 시간 측정
 
-The following snippet uses the time library to calculate the time taken to execute a piece of code.
+아래 코드 조각은 `time` 라이브러리를 이용해 특정 코드 조각을 실행하는 데 소요되는 시간을 측정합니다.
 
 ```
 import time
@@ -325,19 +327,19 @@ c = a+ b
 end_time = time.time()
 time_taken_in_micro = (end_time- start_time)*(10**6)
 
-print(" Time taken in micro_seconds: {0} ms").format(time_taken_in_micro)
+print("소요 시간: {0} ms").format(time_taken_in_micro)
 ```
 
 ## 17. Flattening a List of Lists
 
-Sometimes you’re not sure about the nesting depth of your list, 
+잘 아시다시피 `Python`에서는 리스트 안에 리스트를 넣어서 중첩된 리스트를 만들 수 있습니다.
 
-and you simply want all the elements in a single flat list.
+하지만 리스트가 얼마나 중첩되어 있는지 알기 어려울 때, 리스트의 원소들을 1차원으로 줄일 수 있습니다.
 
 ```
 from iteration_utilities import deepflatten
 
-# if you only have one depth nested_list, use this
+# 리스트가 한 번만 중첩되어 있을 때(2차원), 다음 코드를 사용할 수 있습니다.
 def flatten(l):
   return [item for sublist in l for item in sublist]
 
@@ -345,23 +347,25 @@ l = [[1,2,3],[3]]
 print(flatten(l))
 # [1, 2, 3, 3]
 
-# if you don't know how deep the list is nested
+# 리스트가 얼마나 중첩되어 있는지 알 수 없을 때, 다음 라이브러리 메서드를 사용합니다.
 l = [[1,2,3],[4,[5],[6,7]],[8,[9,[10]]]]
 
 print(list(deepflatten(l, depth=3)))
 # [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 ```
 
-적절한 형식으로 맞춰진 배열을 원한다면, [Numpy flatten](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.flatten.htmlhttps://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.flatten.html "reference")이 더 적합합니다.
+적절한 형식으로 포맷된 배열을 원한다면, [Numpy flatten](https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.flatten.htmlhttps://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.flatten.html "reference")이 더 적합합니다.
 
 
-## 18. Merging Two Dictionaries
+## 18. 두 딕셔너리 병합하기
 
-While in Python 2, we used the update() method to merge two dictionaries; Python 3.5 made the process even simpler.
+`Python 2`에서는 `update()` 메서드를 통해 딕셔너리를 병합했습니다.
 
-In the script given below, two dictionaries are merged. 
+`Python 3.5` 에서는 더 간단한 방법을 제공하죠.
 
-Values from the second dictionary are used in case of intersections.
+아래 코드 조각은 두 딕셔너리를 병합하는 예시입니다. 
+
+두 딕셔너리에 동일한 항목이 존재할 경우, `dict_2`의 값이 적용됩니다.
 
 ```
 dict_1 = {'apple': 9, 'banana': 6}
@@ -370,7 +374,7 @@ dict_2 = {'banana': 4, 'orange': 8}
 combined_dict = {**dict_1, **dict_2}
 
 print(combined_dict)
-# Output
+# 출력
 # {'apple': 9, 'banana': 4, 'orange': 8}
 ```
 
