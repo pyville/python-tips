@@ -330,7 +330,7 @@ time_taken_in_micro = (end_time- start_time)*(10**6)
 print("소요 시간: {0} ms").format(time_taken_in_micro)
 ```
 
-## 17. Flattening a List of Lists
+## 17. 리스트의 중첩 문제 해결
 
 잘 아시다시피 `Python`에서는 리스트 안에 리스트를 넣어서 중첩된 리스트를 만들 수 있습니다.
 
